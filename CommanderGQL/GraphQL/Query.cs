@@ -2,8 +2,9 @@ namespace CommanderGQL.GraphQL
 {
     public class Query
     {
+        [UseDbContext(typeof(ApplicationDbContext))]
         public IQueryable<Platform> GetPlatforms(
-            [Service] ApplicationDbContext applicationDbContext
+            [ScopedService] ApplicationDbContext applicationDbContext
         ) => applicationDbContext.Platforms;
     }
 }
