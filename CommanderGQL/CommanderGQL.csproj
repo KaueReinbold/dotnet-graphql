@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>a2ec89f0-2d2b-4f89-826b-0a5f8a8fe263</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +16,13 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="CommanderGQL.Models" />
+    <Using Include="CommanderGQL.Data" />
+    <Using Include="CommanderGQL.GraphQL" />
+    <Using Include="GraphQL.Server.Ui.Voyager" />
   </ItemGroup>
 
 </Project>
