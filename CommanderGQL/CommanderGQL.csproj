@@ -25,6 +25,7 @@
     <Using Include="CommanderGQL.Extensions" />
     <Using Include="Microsoft.EntityFrameworkCore" />
     <Using Include="GraphQL.Server.Ui.Voyager" />
+    <Using Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
 
 </Project>

@@ -6,5 +6,10 @@ namespace CommanderGQL.GraphQL
         public IQueryable<Platform> GetPlatforms(
             [ScopedService] ApplicationDbContext applicationDbContext
         ) => applicationDbContext.Platforms;
+
+        [UseDbContext(typeof(ApplicationDbContext))]
+        public IQueryable<Command> GetCommands(
+            [ScopedService] ApplicationDbContext applicationDbContext
+        ) => applicationDbContext.Commands;
     }
 }

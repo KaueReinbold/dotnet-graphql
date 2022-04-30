@@ -1,11 +1,11 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services
+builder
+    .Services
     .AddDatabase()
     .AddGraphQL();
 
-var app = builder.Build();
-
-app.UseGraphQL();
-
-app.Run();
+builder
+    .Build()
+    .UseGraphQL()
+    .Run();
