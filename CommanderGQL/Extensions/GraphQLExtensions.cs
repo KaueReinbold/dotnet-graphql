@@ -7,6 +7,7 @@ namespace CommanderGQL.Extensions
             services
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
+                .AddType<PlatformType>()
                 .AddProjections();
 
             return services;
