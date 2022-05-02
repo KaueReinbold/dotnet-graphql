@@ -1,4 +1,4 @@
-namespace CommanderGQL.GraphQL.Platforms
+namespace CommanderGQL.GraphQL.Models.Platforms
 {
     public class PlatformType : ObjectType<Platform>
     {

@@ -1,4 +1,4 @@
-namespace CommanderGQL.GraphQL.Commands
+namespace CommanderGQL.GraphQL.Models.Commands
 {
     public class CommandType : ObjectType<Command>
     {
