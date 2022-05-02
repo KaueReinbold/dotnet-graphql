@@ -29,6 +29,7 @@
     <Using Include="Microsoft.EntityFrameworkCore" />
     <Using Include="GraphQL.Server.Ui.Voyager" />
     <Using Include="System.ComponentModel.DataAnnotations" />
+    <Using Include="HotChocolate.Subscriptions" />
   </ItemGroup>
 
 </Project>

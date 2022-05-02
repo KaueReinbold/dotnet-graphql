@@ -8,16 +8,19 @@ namespace CommanderGQL.GraphQL.Extensions
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
                 .AddMutationType<Mutation>()
+                .AddSubscriptionType<Subscription>()
                 .AddType<PlatformType>()
                 .AddType<CommandType>()
                 .AddFiltering()
-                .AddSorting();
+                .AddSorting()
+                .AddInMemorySubscriptions();
 
             return services;
         }
 
         public static WebApplication UseGraphQL(this WebApplication app)
         {
+            app.UseWebSockets();
             app.MapGraphQL();
             app.UseGraphQLVoyager(new VoyagerOptions
             {

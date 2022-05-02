@@ -5,7 +5,9 @@ namespace CommanderGQL.GraphQL
         [UseDbContext(typeof(ApplicationDbContext))]
         public async Task<AddPlatformPayload> AddPlatformAsync(
             AddPlatformInput addPlatformInput,
-            [ScopedService] ApplicationDbContext applicationDbContext
+            [ScopedService] ApplicationDbContext applicationDbContext,
+            [Service] ITopicEventSender eventSender,
+            CancellationToken cancellationToken
         )
         {
             var platform = new Platform
@@ -16,6 +18,8 @@ namespace CommanderGQL.GraphQL
             applicationDbContext.Platforms.Add(platform);
 
             await applicationDbContext.SaveChangesAsync();
+
+            await eventSender.SendAsync(nameof(Subscription.OnPlatformAdded), platform, cancellationToken);
 
             return new AddPlatformPayload(platform);
         }
