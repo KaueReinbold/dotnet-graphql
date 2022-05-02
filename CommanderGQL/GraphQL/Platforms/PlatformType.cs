@@ -1,22 +1,25 @@
 namespace CommanderGQL.GraphQL.Platforms
 {
-    public class PlatformType
-        : ObjectType<Platform>
+    public class PlatformType : ObjectType<Platform>
     {
-        protected override void Configure(
-            IObjectTypeDescriptor<Platform> descriptor
-        )
+        protected override void Configure(IObjectTypeDescriptor<Platform> descriptor)
         {
-            descriptor
-                .Description("Represents any software or service that has a command line interface.");
+            descriptor.Description("Represents any software or service that has a command line interface.");
 
             descriptor
-                .Field(platform => platform.LicenseKey)
-                .Ignore(true);
+                .Field(platform => platform.Id)
+                .Description("Represents the unique ID for the platform.");
 
             descriptor
-                .Field(p => p.Commands)
-                .ResolveWith<Resolvers>(p => p.GetCommands(default!, default!))
+                .Field(platform => platform.Name)
+                .Description("Represents the name for the platform.");
+
+            descriptor
+                .Field(platform => platform.LicenseKey).Ignore();
+
+            descriptor
+                .Field(platform => platform.Commands)
+                .ResolveWith<Resolvers>(platform => platform.GetCommands(default!, default!))
                 .UseDbContext<ApplicationDbContext>()
                 .Description("This is the list of available commands for this platform.");
         }
@@ -24,14 +27,14 @@ namespace CommanderGQL.GraphQL.Platforms
         private class Resolvers
         {
             public IQueryable<Command> GetCommands(
-                Platform platform, 
-                [ScopedService] ApplicationDbContext applicationDbContext
+                [Parent] Platform platform, 
+                [ScopedService] ApplicationDbContext context
             )
             {
-                return applicationDbContext
+                return context
                     .Commands
-                    .Where(command => 
-                        command.PlatformId == platform.Id
+                    .Where(platform => 
+                        platform.PlatformId == platform.Id
                     );
             }
         }

@@ -16,15 +16,15 @@ namespace CommanderGQL.Data
         {
             modelBuilder
                 .Entity<Platform>()
-                .HasMany(platform => platform.Commands)
-                .WithOne(command => command.Platform)
-                .HasForeignKey(platform => platform.PlatformId);
-
+                .HasMany(p => p.Commands)
+                .WithOne(p => p.Platform!)
+                .HasForeignKey(p => p.PlatformId);
+            
             modelBuilder
                 .Entity<Command>()
-                .HasOne(command => command.Platform)
-                .WithMany(platform => platform.Commands)
-                .HasForeignKey(platform => platform.PlatformId);
+                .HasOne(p => p.Platform)
+                .WithMany(p => p.Commands)
+                .HasForeignKey(p => p.PlatformId);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -23,6 +23,8 @@
     <Using Include="CommanderGQL.Data" />
     <Using Include="CommanderGQL.GraphQL" />
     <Using Include="CommanderGQL.GraphQL.Platforms" />
+    <Using Include="CommanderGQL.GraphQL.Commands" />
+    <Using Include="CommanderGQL.GraphQL.Extensions" />
     <Using Include="CommanderGQL.Extensions" />
     <Using Include="Microsoft.EntityFrameworkCore" />
     <Using Include="GraphQL.Server.Ui.Voyager" />

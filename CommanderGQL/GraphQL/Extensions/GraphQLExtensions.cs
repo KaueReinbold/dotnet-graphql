@@ -1,4 +1,4 @@
-namespace CommanderGQL.Extensions
+namespace CommanderGQL.GraphQL.Extensions
 {
     public static class GraphQLExtensions
     {
@@ -8,7 +8,7 @@ namespace CommanderGQL.Extensions
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
                 .AddType<PlatformType>()
-                .AddProjections();
+                .AddType<CommandType>();
 
             return services;
         }
