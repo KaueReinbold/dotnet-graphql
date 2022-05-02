@@ -8,7 +8,9 @@ namespace CommanderGQL.GraphQL.Extensions
                 .AddGraphQLServer()
                 .AddQueryType<Query>()
                 .AddType<PlatformType>()
-                .AddType<CommandType>();
+                .AddType<CommandType>()
+                .AddFiltering()
+                .AddSorting();
 
             return services;
         }
